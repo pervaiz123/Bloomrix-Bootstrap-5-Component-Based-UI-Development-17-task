@@ -1,0 +1,1270 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Responsive Bootstrap 5 admin management portal"
+    />
+    <title>Admin Portal | Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside
+        class="sidebar offcanvas-lg offcanvas-start"
+        tabindex="-1"
+        id="appSidebar"
+        aria-labelledby="sidebarLabel"
+      >
+        <div class="sidebar-header">
+          <a class="brand" href="#dashboard" aria-label="Admin portal home"
+            ><span class="brand-mark">A</span
+            ><span id="sidebarLabel"
+              >Admin<span class="brand-light">Portal</span></span
+            ></a
+          >
+          <button
+            class="btn-close btn-close-white d-lg-none"
+            type="button"
+            data-bs-dismiss="offcanvas"
+            data-bs-target="#appSidebar"
+            aria-label="Close navigation"
+          ></button>
+        </div>
+        <div class="sidebar-caption">WORKSPACE</div>
+        <nav class="nav flex-column sidebar-nav" aria-label="Main navigation">
+          <a class="nav-link active" href="#dashboard" data-view="dashboard"
+            ><span class="nav-symbol">▦</span>Dashboard</a
+          >
+          <a class="nav-link" href="#users" data-view="users"
+            ><span class="nav-symbol">♙</span>User management</a
+          >
+          <a class="nav-link" href="#registration" data-view="registration"
+            ><span class="nav-symbol">＋</span>Registration</a
+          >
+          <a class="nav-link" href="#settings" data-view="settings"
+            ><span class="nav-symbol">⚙</span>Settings</a
+          >
+          <a class="nav-link" href="#components" data-view="components"
+            ><span class="nav-symbol">▤</span>Components</a
+          >
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="sidebar-help">
+            <div class="help-icon">?</div>
+            <div>
+              <strong>Need help?</strong><small>View the component guide</small>
+            </div>
+          </div>
+          <div class="sidebar-user">
+            <img
+              src="https://i.pravatar.cc/80?img=12"
+              alt="Administrator profile"
+            />
+            <div>
+              <strong>Pervaiz Ahmed</strong><small>Administrator</small>
+            </div>
+            <span class="ms-auto">•••</span>
+          </div>
+        </div>
+      </aside>
+
+      <div class="main-area">
+        <header class="topbar">
+          <div class="d-flex align-items-center gap-3">
+            <button
+              class="btn btn-light sidebar-toggle d-lg-none"
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#appSidebar"
+              aria-controls="appSidebar"
+              aria-label="Open navigation"
+            >
+              ☰
+            </button>
+            <button
+              class="btn btn-light sidebar-toggle d-none d-lg-inline-flex"
+              id="desktopSidebarToggle"
+              type="button"
+              aria-label="Collapse sidebar"
+              aria-expanded="true"
+            >
+              ☰
+            </button>
+            <div class="breadcrumb-wrap d-none d-sm-block">
+              <span class="text-secondary">Workspace</span
+              ><span class="mx-2 text-secondary">/</span
+              ><strong id="breadcrumbCurrent">Dashboard</strong>
+            </div>
+          </div>
+          <div class="topbar-actions">
+            <label class="top-search d-none d-md-flex"
+              ><span aria-hidden="true">⌕</span
+              ><input
+                id="globalSearch"
+                type="search"
+                placeholder="Search users..."
+                aria-label="Search users"
+              /><kbd>⌘ K</kbd></label
+            >
+            <button
+              class="btn btn-light icon-button position-relative"
+              id="notificationButton"
+              type="button"
+              data-bs-toggle="tooltip"
+              data-bs-title="Notifications"
+              aria-label="Notifications"
+            >
+              ♧<span class="notification-dot"></span>
+            </button>
+            <div class="dropdown">
+              <button
+                class="btn profile-trigger dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img src="https://i.pravatar.cc/80?img=12" alt="" /><span
+                  class="d-none d-sm-inline"
+                  >Alex Morgan</span
+                >
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                <li>
+                  <a class="dropdown-item" href="#settings" data-view="settings"
+                    >Account settings</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <button class="dropdown-item" id="signOutButton">
+                    Sign out
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </header>
+
+        <main class="content container-fluid">
+          <section class="view-section" id="view-dashboard">
+            <div class="page-heading">
+              <div>
+                <div class="eyebrow">OVERVIEW</div>
+                <h1>Dashboard</h1>
+                <p class="text-secondary mb-0">
+                  Welcome back, Alex. Here's what's happening today.
+                </p>
+              </div>
+              <div class="d-flex gap-2 flex-wrap">
+                <button
+                  class="btn btn-outline-secondary"
+                  id="exportUsersButton"
+                >
+                  ↓ Export users</button
+                ><button
+                  class="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#userModal"
+                  id="dashboardAddButton"
+                >
+                  ＋ Add user
+                </button>
+              </div>
+            </div>
+            <div class="welcome-panel mb-4">
+              <div>
+                <span class="welcome-kicker"
+                  >MONDAY, YOUR WORKSPACE AT A GLANCE</span
+                >
+                <h2>Good to see you, Alex <span aria-hidden="true">✦</span></h2>
+                <p>Here is the latest activity across your organization.</p>
+              </div>
+              <div class="welcome-art" aria-hidden="true">
+                <span>✧</span><span>✦</span><span>◌</span>
+              </div>
+            </div>
+            <div class="row g-3 mb-4" id="summaryCards">
+              <div class="col-12 col-sm-6 col-xl-3">
+                <article class="summary-card">
+                  <div class="summary-top">
+                    <span>Total users</span
+                    ><span class="metric-icon purple">♙</span>
+                  </div>
+                  <div class="metric-value" id="totalUsers">12</div>
+                  <div class="metric-foot">
+                    <span class="trend-up">↗ 8.2%</span
+                    ><span>vs last month</span>
+                  </div>
+                </article>
+              </div>
+              <div class="col-12 col-sm-6 col-xl-3">
+                <article class="summary-card">
+                  <div class="summary-top">
+                    <span>Active users</span
+                    ><span class="metric-icon green">✓</span>
+                  </div>
+                  <div class="metric-value" id="activeUsers">7</div>
+                  <div class="metric-foot">
+                    <span class="trend-up">↗ 5.4%</span
+                    ><span>vs last month</span>
+                  </div>
+                </article>
+              </div>
+              <div class="col-12 col-sm-6 col-xl-3">
+                <article class="summary-card">
+                  <div class="summary-top">
+                    <span>Pending users</span
+                    ><span class="metric-icon amber">◷</span>
+                  </div>
+                  <div class="metric-value" id="pendingUsers">3</div>
+                  <div class="metric-foot">
+                    <span class="trend-neutral">• Needs review</span
+                    ><span>awaiting approval</span>
+                  </div>
+                </article>
+              </div>
+              <div class="col-12 col-sm-6 col-xl-3">
+                <article class="summary-card">
+                  <div class="summary-top">
+                    <span>Inactive users</span
+                    ><span class="metric-icon red">⊘</span>
+                  </div>
+                  <div class="metric-value" id="inactiveUsers">2</div>
+                  <div class="metric-foot">
+                    <span class="trend-down">↘ 1.2%</span
+                    ><span>vs last month</span>
+                  </div>
+                </article>
+              </div>
+            </div>
+            <div class="row g-3">
+              <div class="col-12 col-xl-8">
+                <section class="panel h-100">
+                  <div class="panel-heading">
+                    <div>
+                      <h2>Recent activity</h2>
+                      <p>Latest updates from your team</p>
+                    </div>
+                    <button
+                      class="btn btn-sm btn-outline-secondary"
+                      data-view="users"
+                    >
+                      View users
+                    </button>
+                  </div>
+                  <div class="activity-list" id="activityList"></div>
+                </section>
+              </div>
+              <div class="col-12 col-xl-4">
+                <section class="panel h-100">
+                  <div class="panel-heading">
+                    <div>
+                      <h2>Account overview</h2>
+                      <p>User distribution</p>
+                    </div>
+                    <button
+                      class="btn btn-sm btn-light"
+                      data-bs-toggle="tooltip"
+                      data-bs-title="Counts update when user records change"
+                    >
+                      ⓘ
+                    </button>
+                  </div>
+                  <div class="overview-total">
+                    <strong id="overviewTotal">12</strong
+                    ><span>registered users</span>
+                  </div>
+                  <div
+                    class="progress stacked-progress mb-3"
+                    role="progressbar"
+                    aria-label="User status distribution"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    <div
+                      class="progress-bar bg-success"
+                      id="activeProgress"
+                      style="width: 58%"
+                    ></div>
+                    <div
+                      class="progress-bar bg-warning"
+                      id="pendingProgress"
+                      style="width: 25%"
+                    ></div>
+                    <div
+                      class="progress-bar bg-danger"
+                      id="inactiveProgress"
+                      style="width: 17%"
+                    ></div>
+                  </div>
+                  <div class="legend-list">
+                    <div>
+                      <span class="legend-dot bg-success"></span>Active
+                      <strong id="activeLegend">7</strong>
+                    </div>
+                    <div>
+                      <span class="legend-dot bg-warning"></span>Pending
+                      <strong id="pendingLegend">3</strong>
+                    </div>
+                    <div>
+                      <span class="legend-dot bg-danger"></span>Inactive
+                      <strong id="inactiveLegend">2</strong>
+                    </div>
+                  </div>
+                  <hr />
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <span class="text-secondary small">Profile completion</span
+                    ><strong class="small">76%</strong>
+                  </div>
+                  <div class="progress mt-2" style="height: 7px">
+                    <div class="progress-bar" style="width: 76%"></div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </section>
+
+          <section class="view-section d-none" id="view-users">
+            <div class="page-heading">
+              <div>
+                <div class="eyebrow">DIRECTORY</div>
+                <h1>User management</h1>
+                <p class="text-secondary mb-0">
+                  Manage user access, roles and account status.
+                </p>
+              </div>
+              <button
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#userModal"
+                id="addUserButton"
+              >
+                ＋ Add user
+              </button>
+            </div>
+            <section class="panel">
+              <div class="users-toolbar">
+                <div class="input-group search-control">
+                  <span class="input-group-text">⌕</span
+                  ><input
+                    class="form-control"
+                    type="search"
+                    id="userSearch"
+                    placeholder="Search name, email or role..."
+                    aria-label="Search users"
+                  />
+                </div>
+                <select
+                  class="form-select status-filter"
+                  id="statusFilter"
+                  aria-label="Filter by account status"
+                >
+                  <option value="all">All statuses</option>
+                  <option value="Active">Active</option>
+                  <option value="Pending">Pending</option>
+                  <option value="Inactive">Inactive</option></select
+                ><select
+                  class="form-select role-filter"
+                  id="roleFilter"
+                  aria-label="Filter by role"
+                >
+                  <option value="all">All roles</option>
+                  <option>Administrator</option>
+                  <option>Manager</option>
+                  <option>Editor</option>
+                  <option>Member</option>
+                </select>
+              </div>
+              <div class="table-responsive">
+                <table class="table align-middle user-table mb-0">
+                  <thead>
+                    <tr>
+                      <th scope="col">User</th>
+                      <th scope="col">Role</th>
+                      <th scope="col">Registered</th>
+                      <th scope="col">Status</th>
+                      <th scope="col" class="text-end">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="userTableBody"></tbody>
+                </table>
+              </div>
+              <div class="table-footer">
+                <span class="text-secondary small" id="tableCount"
+                  >Showing 1–10 of 12 users</span
+                >
+                <nav aria-label="User table pages">
+                  <ul
+                    class="pagination pagination-sm mb-0"
+                    id="pagination"
+                  ></ul>
+                </nav>
+              </div>
+              <div class="empty-state d-none" id="emptyState">
+                <div class="empty-icon">⌕</div>
+                <h3>No users found</h3>
+                <p>Try changing your search or filters.</p>
+                <button
+                  class="btn btn-sm btn-outline-primary"
+                  id="clearFiltersButton"
+                >
+                  Clear filters
+                </button>
+              </div>
+            </section>
+          </section>
+
+          <section class="view-section d-none" id="view-registration">
+            <div class="page-heading">
+              <div>
+                <div class="eyebrow">ONBOARDING</div>
+                <h1>User registration</h1>
+                <p class="text-secondary mb-0">
+                  Create a new account for your organization.
+                </p>
+              </div>
+            </div>
+            <div class="form-layout">
+              <section class="panel">
+                <div class="panel-heading">
+                  <div>
+                    <h2>Personal information</h2>
+                    <p>Fields marked with * are required.</p>
+                  </div>
+                </div>
+                <form id="registrationForm" class="needs-validation" novalidate>
+                  <div class="row g-3">
+                    <div class="col-12 col-md-6">
+                      <label class="form-label" for="regName">Full name *</label
+                      ><input
+                        class="form-control"
+                        id="regName"
+                        name="name"
+                        required
+                        minlength="2"
+                      />
+                      <div class="invalid-feedback">
+                        Enter a name with at least 2 characters.
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <label class="form-label" for="regEmail"
+                        >Email address *</label
+                      ><input
+                        class="form-control"
+                        type="email"
+                        id="regEmail"
+                        name="email"
+                        required
+                      />
+                      <div class="invalid-feedback">
+                        Enter a valid email address.
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <label class="form-label" for="regPhone"
+                        >Phone number *</label
+                      ><input
+                        class="form-control"
+                        type="tel"
+                        id="regPhone"
+                        name="phone"
+                        required
+                        pattern="[0-9+() -]{7,20}"
+                      />
+                      <div class="invalid-feedback">
+                        Enter a valid phone number.
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <label class="form-label" for="regGender">Gender *</label
+                      ><select class="form-select" id="regGender" required>
+                        <option value="">Choose...</option>
+                        <option>Female</option>
+                        <option>Male</option>
+                        <option>Non-binary</option>
+                        <option>Prefer not to say</option>
+                      </select>
+                      <div class="invalid-feedback">
+                        Select a gender option.
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <label class="form-label" for="regDepartment"
+                        >Department *</label
+                      ><select class="form-select" id="regDepartment" required>
+                        <option value="">Choose department...</option>
+                        <option>Engineering</option>
+                        <option>Design</option>
+                        <option>Marketing</option>
+                        <option>Operations</option>
+                        <option>Human Resources</option>
+                        <option>Finance</option>
+                      </select>
+                      <div class="invalid-feedback">Select a department.</div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <label class="form-label" for="regImage"
+                        >Profile image</label
+                      ><input
+                        class="form-control"
+                        type="file"
+                        id="regImage"
+                        accept="image/*"
+                      />
+                      <div class="form-text">
+                        Choose an image file (optional).
+                      </div>
+                      <img
+                        id="registrationPreview"
+                        class="image-preview d-none mt-2"
+                        alt="Selected profile preview"
+                      />
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <label class="form-label" for="regPassword"
+                        >Password *</label
+                      ><input
+                        class="form-control"
+                        type="password"
+                        id="regPassword"
+                        required
+                        minlength="8"
+                      />
+                      <div class="invalid-feedback">
+                        Use at least 8 characters.
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <label class="form-label" for="regConfirmPassword"
+                        >Confirm password *</label
+                      ><input
+                        class="form-control"
+                        type="password"
+                        id="regConfirmPassword"
+                        required
+                      />
+                      <div class="invalid-feedback">Passwords must match.</div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="regTerms"
+                          required
+                        /><label class="form-check-label" for="regTerms"
+                          >I agree to the terms and conditions *</label
+                        >
+                        <div class="invalid-feedback">
+                          You must agree before submitting.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 d-flex gap-2 justify-content-end">
+                      <button class="btn btn-outline-secondary" type="reset">
+                        Reset form</button
+                      ><button class="btn btn-primary" type="submit">
+                        Create account
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </section>
+              <aside class="registration-aside">
+                <div class="aside-illustration">✦</div>
+                <h3>Welcome to the team</h3>
+                <p>
+                  Complete the registration details to add a new member to your
+                  organization.
+                </p>
+                <ul>
+                  <li>Use a valid work email</li>
+                  <li>Choose a secure password</li>
+                  <li>Assign the correct department</li>
+                </ul>
+              </aside>
+            </div>
+          </section>
+
+          <section class="view-section d-none" id="view-settings">
+            <div class="page-heading">
+              <div>
+                <div class="eyebrow">PREFERENCES</div>
+                <h1>Settings</h1>
+                <p class="text-secondary mb-0">
+                  Manage your profile, account and notification preferences.
+                </p>
+              </div>
+            </div>
+            <section class="panel settings-panel">
+              <ul
+                class="nav nav-tabs settings-tabs"
+                id="settingsTabs"
+                role="tablist"
+              >
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link active"
+                    id="profile-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#profile-pane"
+                    type="button"
+                    role="tab"
+                    aria-controls="profile-pane"
+                    aria-selected="true"
+                  >
+                    Profile
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link"
+                    id="account-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#account-pane"
+                    type="button"
+                    role="tab"
+                    aria-controls="account-pane"
+                    aria-selected="false"
+                  >
+                    Account
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link"
+                    id="password-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#password-pane"
+                    type="button"
+                    role="tab"
+                    aria-controls="password-pane"
+                    aria-selected="false"
+                  >
+                    Password
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link"
+                    id="notifications-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#notifications-pane"
+                    type="button"
+                    role="tab"
+                    aria-controls="notifications-pane"
+                    aria-selected="false"
+                  >
+                    Notifications
+                  </button>
+                </li>
+              </ul>
+              <div class="tab-content settings-content">
+                <div
+                  class="tab-pane fade show active"
+                  id="profile-pane"
+                  role="tabpanel"
+                  aria-labelledby="profile-tab"
+                  tabindex="0"
+                >
+                  <h2>Profile settings</h2>
+                  <p class="text-secondary">
+                    Update the information associated with your profile.
+                  </p>
+                  <form id="profileSettingsForm" class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label" for="settingsName"
+                        >Display name</label
+                      ><input
+                        class="form-control"
+                        id="settingsName"
+                        value="Alex Morgan"
+                        required
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="settingsEmail"
+                        >Email address</label
+                      ><input
+                        class="form-control"
+                        type="email"
+                        id="settingsEmail"
+                        value="alex.morgan@example.com"
+                        required
+                      />
+                    </div>
+                    <div class="col-12">
+                      <label class="form-label" for="settingsBio">Bio</label
+                      ><textarea
+                        class="form-control"
+                        id="settingsBio"
+                        rows="3"
+                        placeholder="A short introduction..."
+                      ></textarea>
+                    </div>
+                    <div class="col-12">
+                      <button class="btn btn-primary" type="submit">
+                        Save profile
+                      </button>
+                    </div>
+                  </form>
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="account-pane"
+                  role="tabpanel"
+                  aria-labelledby="account-tab"
+                  tabindex="0"
+                >
+                  <h2>Account settings</h2>
+                  <p class="text-secondary">
+                    Control your account preferences.
+                  </p>
+                  <form id="accountSettingsForm">
+                    <div class="mb-3">
+                      <label class="form-label" for="languageSelect"
+                        >Language</label
+                      ><select class="form-select" id="languageSelect">
+                        <option>English</option>
+                        <option>Urdu</option>
+                        <option>French</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label" for="timezoneSelect"
+                        >Time zone</label
+                      ><select class="form-select" id="timezoneSelect">
+                        <option>UTC</option>
+                        <option>Asia/Karachi</option>
+                        <option>Europe/London</option>
+                        <option>America/New_York</option>
+                      </select>
+                    </div>
+                    <div class="form-check form-switch mb-3">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        role="switch"
+                        id="twoFactorSwitch"
+                        checked
+                      /><label class="form-check-label" for="twoFactorSwitch"
+                        >Enable two-factor authentication</label
+                      >
+                    </div>
+                    <button class="btn btn-primary" type="submit">
+                      Save account settings
+                    </button>
+                  </form>
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="password-pane"
+                  role="tabpanel"
+                  aria-labelledby="password-tab"
+                  tabindex="0"
+                >
+                  <h2>Change password</h2>
+                  <p class="text-secondary">
+                    Choose a strong password you do not use elsewhere.
+                  </p>
+                  <form id="passwordSettingsForm" class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label" for="currentPassword"
+                        >Current password</label
+                      ><input
+                        class="form-control"
+                        type="password"
+                        id="currentPassword"
+                        required
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="newPassword"
+                        >New password</label
+                      ><input
+                        class="form-control"
+                        type="password"
+                        id="newPassword"
+                        minlength="8"
+                        required
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="confirmNewPassword"
+                        >Confirm new password</label
+                      ><input
+                        class="form-control"
+                        type="password"
+                        id="confirmNewPassword"
+                        required
+                      />
+                    </div>
+                    <div class="col-12">
+                      <button class="btn btn-primary" type="submit">
+                        Update password
+                      </button>
+                    </div>
+                  </form>
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="notifications-pane"
+                  role="tabpanel"
+                  aria-labelledby="notifications-tab"
+                  tabindex="0"
+                >
+                  <h2>Notification preferences</h2>
+                  <p class="text-secondary">
+                    Choose which updates you want to receive.
+                  </p>
+                  <form id="notificationSettingsForm">
+                    <div class="preference-row">
+                      <div>
+                        <strong>Email notifications</strong
+                        ><small>Receive important updates by email.</small>
+                      </div>
+                      <div class="form-check form-switch">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          role="switch"
+                          id="emailNotifications"
+                          checked
+                          aria-label="Email notifications"
+                        />
+                      </div>
+                    </div>
+                    <div class="preference-row">
+                      <div>
+                        <strong>Product updates</strong
+                        ><small>News about features and improvements.</small>
+                      </div>
+                      <div class="form-check form-switch">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          role="switch"
+                          id="productNotifications"
+                          aria-label="Product updates"
+                        />
+                      </div>
+                    </div>
+                    <div class="preference-row">
+                      <div>
+                        <strong>Security alerts</strong
+                        ><small
+                          >Important activity related to account
+                          security.</small
+                        >
+                      </div>
+                      <div class="form-check form-switch">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          role="switch"
+                          id="securityNotifications"
+                          checked
+                          aria-label="Security alerts"
+                        />
+                      </div>
+                    </div>
+                    <button class="btn btn-primary mt-3" type="submit">
+                      Save preferences
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </section>
+          </section>
+
+          <section class="view-section d-none" id="view-components">
+            <div class="page-heading">
+              <div>
+                <div class="eyebrow">REFERENCE</div>
+                <h1>Components showcase</h1>
+                <p class="text-secondary mb-0">
+                  Small examples of Bootstrap 5 components and utilities used in
+                  this portal.
+                </p>
+              </div>
+            </div>
+            <div class="row g-3">
+              <div class="col-12 col-lg-6">
+                <section class="panel showcase-panel">
+                  <h2>Buttons and button groups</h2>
+                  <div class="d-flex flex-wrap gap-2 mb-3">
+                    <button class="btn btn-primary">Primary</button
+                    ><button class="btn btn-outline-secondary">Outline</button
+                    ><button class="btn btn-success">Success</button
+                    ><button class="btn btn-danger" disabled>Disabled</button>
+                  </div>
+                  <div
+                    class="btn-group"
+                    role="group"
+                    aria-label="View selector"
+                  >
+                    <button class="btn btn-outline-primary active">Day</button
+                    ><button class="btn btn-outline-primary">Week</button
+                    ><button class="btn btn-outline-primary">Month</button>
+                  </div>
+                </section>
+              </div>
+              <div class="col-12 col-lg-6">
+                <section class="panel showcase-panel">
+                  <h2>Badges and alerts</h2>
+                  <div class="d-flex flex-wrap gap-2 mb-3">
+                    <span class="badge text-bg-success">Active</span
+                    ><span class="badge text-bg-warning">Pending</span
+                    ><span class="badge text-bg-danger">Inactive</span
+                    ><span class="badge text-bg-primary">New</span>
+                  </div>
+                  <div class="alert alert-info mb-0" role="alert">
+                    This is an informational Bootstrap alert.
+                  </div>
+                </section>
+              </div>
+              <div class="col-12 col-lg-6">
+                <section class="panel showcase-panel">
+                  <h2>Breadcrumb and progress</h2>
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item">
+                        <a href="#dashboard">Home</a>
+                      </li>
+                      <li class="breadcrumb-item">
+                        <a href="#components">UI</a>
+                      </li>
+                      <li class="breadcrumb-item active" aria-current="page">
+                        Components
+                      </li>
+                    </ol>
+                  </nav>
+                  <div
+                    class="progress"
+                    role="progressbar"
+                    aria-label="Example progress"
+                    aria-valuenow="65"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    <div class="progress-bar" style="width: 65%">65%</div>
+                  </div>
+                </section>
+              </div>
+              <div class="col-12 col-lg-6">
+                <section class="panel showcase-panel">
+                  <h2>List group and spinner</h2>
+                  <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-between">
+                      First item
+                      <span class="badge text-bg-primary rounded-pill">4</span>
+                    </li>
+                    <li class="list-group-item">Second item</li>
+                  </ul>
+                  <div
+                    class="spinner-border spinner-border-sm text-primary"
+                    role="status"
+                  >
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                  <span class="ms-2 small text-secondary">Loading example</span>
+                </section>
+              </div>
+              <div class="col-12 col-lg-6">
+                <section class="panel showcase-panel">
+                  <h2>Accordion</h2>
+                  <div class="accordion" id="helpAccordion">
+                    <div class="accordion-item">
+                      <h3 class="accordion-header">
+                        <button
+                          class="accordion-button"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#helpOne"
+                          aria-expanded="true"
+                          aria-controls="helpOne"
+                        >
+                          What is the admin portal?
+                        </button>
+                      </h3>
+                      <div
+                        id="helpOne"
+                        class="accordion-collapse collapse show"
+                        data-bs-parent="#helpAccordion"
+                      >
+                        <div class="accordion-body">
+                          A responsive interface for managing users and account
+                          preferences.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h3 class="accordion-header">
+                        <button
+                          class="accordion-button collapsed"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#helpTwo"
+                          aria-expanded="false"
+                          aria-controls="helpTwo"
+                        >
+                          Where are changes stored?
+                        </button>
+                      </h3>
+                      <div
+                        id="helpTwo"
+                        class="accordion-collapse collapse"
+                        data-bs-parent="#helpAccordion"
+                      >
+                        <div class="accordion-body">
+                          Sample user changes are stored in this browser using
+                          localStorage.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="col-12 col-lg-6">
+                <section class="panel showcase-panel">
+                  <h2>Dropdown, tooltip and popover</h2>
+                  <div class="d-flex gap-2 flex-wrap">
+                    <div class="dropdown">
+                      <button
+                        class="btn btn-outline-primary dropdown-toggle"
+                        data-bs-toggle="dropdown"
+                      >
+                        Dropdown
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <button class="dropdown-item">Action one</button>
+                        </li>
+                        <li>
+                          <button class="dropdown-item">Action two</button>
+                        </li>
+                      </ul>
+                    </div>
+                    <button
+                      class="btn btn-outline-secondary"
+                      data-bs-toggle="tooltip"
+                      data-bs-title="Helpful tooltip text"
+                    >
+                      Hover or focus</button
+                    ><button
+                      class="btn btn-outline-secondary"
+                      data-bs-toggle="popover"
+                      data-bs-title="Popover title"
+                      data-bs-content="Popover content is displayed on click."
+                    >
+                      Show popover
+                    </button>
+                  </div>
+                </section>
+              </div>
+              <div class="col-12">
+                <section class="panel showcase-panel">
+                  <h2>Toast and offcanvas</h2>
+                  <div class="d-flex gap-2 flex-wrap">
+                    <button class="btn btn-primary" id="showDemoToast">
+                      Show toast</button
+                    ><button
+                      class="btn btn-outline-primary"
+                      data-bs-toggle="offcanvas"
+                      data-bs-target="#demoOffcanvas"
+                    >
+                      Open offcanvas example</button
+                    ><button
+                      class="btn btn-outline-secondary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#userModal"
+                    >
+                      Open user modal
+                    </button>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="userModal"
+      tabindex="-1"
+      aria-labelledby="userModalTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <form id="userForm" novalidate>
+            <div class="modal-header">
+              <div>
+                <h2 class="modal-title fs-5" id="userModalTitle">Add user</h2>
+                <p class="small text-secondary mb-0">
+                  Enter the user's account details.
+                </p>
+              </div>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" id="editUserId" />
+              <div class="mb-3">
+                <label class="form-label" for="modalName">Full name *</label
+                ><input
+                  class="form-control"
+                  id="modalName"
+                  required
+                  minlength="2"
+                />
+                <div class="invalid-feedback">Enter a name.</div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="modalEmail">Email *</label
+                ><input
+                  class="form-control"
+                  id="modalEmail"
+                  type="email"
+                  required
+                />
+                <div class="invalid-feedback">Enter a valid email.</div>
+              </div>
+              <div class="row g-3">
+                <div class="col-6">
+                  <label class="form-label" for="modalRole">Role</label
+                  ><select class="form-select" id="modalRole">
+                    <option>Member</option>
+                    <option>Editor</option>
+                    <option>Manager</option>
+                    <option>Administrator</option>
+                  </select>
+                </div>
+                <div class="col-6">
+                  <label class="form-label" for="modalStatus">Status</label
+                  ><select class="form-select" id="modalStatus">
+                    <option>Active</option>
+                    <option>Pending</option>
+                    <option>Inactive</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-light"
+                data-bs-dismiss="modal"
+              >
+                Cancel</button
+              ><button class="btn btn-primary" type="submit">Save user</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="deleteModal"
+      tabindex="-1"
+      aria-labelledby="deleteModalTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title fs-5" id="deleteModalTitle">Delete user?</h2>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to delete
+            <strong id="deleteUserName">this user</strong>? This action cannot
+            be undone.
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-light" data-bs-dismiss="modal">Cancel</button
+            ><button class="btn btn-danger" id="confirmDeleteButton">
+              Delete user
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      id="demoOffcanvas"
+      aria-labelledby="demoOffcanvasLabel"
+    >
+      <div class="offcanvas-header">
+        <h2 class="offcanvas-title fs-5" id="demoOffcanvasLabel">
+          Quick panel
+        </h2>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <p>This is a Bootstrap offcanvas component.</p>
+        <div class="list-group">
+          <a href="#dashboard" class="list-group-item list-group-item-action"
+            >Dashboard</a
+          ><a href="#users" class="list-group-item list-group-item-action"
+            >Users</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div
+        id="appToast"
+        class="toast"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        <div class="toast-header">
+          <span class="toast-indicator"></span
+          ><strong class="me-auto" id="toastTitle">Notification</strong
+          ><small>Just now</small
+          ><button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="toast-body" id="toastMessage">Action completed.</div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>
